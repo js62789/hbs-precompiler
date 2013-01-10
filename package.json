@@ -1,0 +1,16 @@
+{
+  "name": "hbs-precompiler",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/js62789/hbs-precompiler.git"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "handlebars": "*",
+    "uglify-js": "*"
+  }
+}
