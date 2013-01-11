@@ -5,7 +5,6 @@ var fs = require('fs'),
 
 function Precompiler(opts){
 	this.setOptions(opts);
-	this.precompile();
 }
 
 Precompiler.prototype = {
@@ -14,9 +13,14 @@ Precompiler.prototype = {
 			templatesDir = opts.in,
 			outputFile = opts.out,
 			minify = opts.minify,
+			watch = opts.watch,
 			output = '(function() {\n  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};\n';
 
 		var files = this.getTemplateFilesIn(templatesDir);
+
+		if(watch){
+			this.watch(files);
+		}
 
 		for(var i in files){
 			var file = files[i],
@@ -37,6 +41,8 @@ Precompiler.prototype = {
 		}
 
 		fs.writeFileSync(outputFile, output, 'utf8');
+
+		return this;
 	},
 	precompileTemplateFile: function(file){
 		var data = fs.readFileSync(file, 'utf8');
@@ -44,6 +50,7 @@ Precompiler.prototype = {
 	},
 	setOptions: function(opts){
 		var defaultOptions = {
+			watch: false,
 			minify: true
 		};
 
@@ -85,6 +92,16 @@ Precompiler.prototype = {
 				callback(fullPath);
 			}
 		});
+	},
+	watch: function(files){
+		var self = this;
+
+		for(var i in files){
+			var file = files[i];
+			fs.watch(file, function(event){
+				self.precompile();
+			});
+		}
 	}
 };
 

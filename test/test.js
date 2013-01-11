@@ -5,3 +5,5 @@ var compiler = new hbsPrecompiler({
 	in: './templates',
 	out: './output.js'
 });
+
+compiler.precompile();
