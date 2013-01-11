@@ -1,16 +1,29 @@
 {
   "name": "hbs-precompiler",
   "version": "0.1.0",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/js62789/hbs-precompiler.git"
-  },
-  "private": true,
-  "scripts": {
-    "start": "node app"
+  "description": "manages handlebars templates for web sites that serve pages via ExpressJS",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
   },
   "dependencies": {
-    "handlebars": "*",
-    "uglify-js": "*"
-  }
+    "handlebars": "~1.0.7",
+    "uglify-js": "~2.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/js62789/hbs-precompiler.git"
+  },
+  "keywords": [
+    "handlebars",
+    "expressjs",
+    "express",
+    "precompile"
+  ],
+  "author": "Jeffrey Smith <js62789@gmail.com> (https://github.com/js62789)",
+  "license": "BSD"
 }
