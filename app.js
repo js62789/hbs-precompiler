@@ -5,22 +5,32 @@ var fs = require('fs'),
 
 function Precompiler(opts){
 	this.setOptions(opts);
+
+	this.init();
 }
 
 Precompiler.prototype = {
-	precompile: function(){
+  init: function(){
+    var opts = this.opts,
+    	templatesDir = opts.in,
+    	files = this.getTemplateFilesIn(templatesDir);
+
+    if(opts.watch){
+    	this.watch(files);
+  	}
+
+  	this.precompile(files);
+  },
+	precompile: function(files){
 		var opts = this.opts,
 			templatesDir = opts.in,
 			outputFile = opts.out,
 			minify = opts.minify,
 			watch = opts.watch,
+			files = files || this.getTemplateFilesIn(templatesDir),
 			output = '(function() {\n  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};\n';
 
 		var files = this.getTemplateFilesIn(templatesDir);
-
-		if(watch){
-			this.watch(files);
-		}
 
 		for(var i in files){
 			var file = files[i],

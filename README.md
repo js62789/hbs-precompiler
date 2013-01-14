@@ -10,5 +10,5 @@ var hbsPrecompiler = new Precompiler({
   out: '/path/to/output.js',
   minify: true,
   watch: true
-}).precompile();
+});
 ```
