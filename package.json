@@ -1,6 +1,6 @@
 {
   "name": "hbs-precompiler",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "manages handlebars templates for web sites that serve pages via ExpressJS",
   "main": "app.js",
   "directories": {
