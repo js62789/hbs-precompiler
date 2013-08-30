@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "handlebars": "~1.0.7",
+    "handlebars": "1.0.8",
     "uglify-js": "~2.2.3"
   },
   "devDependencies": {},
